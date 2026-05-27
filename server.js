@@ -1,6 +1,6 @@
-const express = require('express');
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+import express from 'express';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 // Enable stealth plugin to bypass Cloudflare
 puppeteer.use(StealthPlugin());
