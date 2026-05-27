@@ -1,9 +1,5 @@
 import express from 'express';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-
-// Enable stealth plugin to bypass Cloudflare
-puppeteer.use(StealthPlugin());
+import puppeteer from 'puppeteer';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -58,7 +54,7 @@ app.get('/scrape', async (req, res) => {
     } catch (error) {
         console.error('Scraping error:', error);
         if (browser) await browser.close();
-        res.status(500).json({ error: 'Failed to scrape the website', details: error.message });
+        res.status(500).json({ error: 'Failed to scrape the website', details: error.message, stack: error.stack });
     }
 });
 
